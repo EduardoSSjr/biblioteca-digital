@@ -1,4 +1,4 @@
-package com.biblioteca.factory;
+package com.biblioteca.biblioteca;
 
 import com.biblioteca.model.Livro;
 
