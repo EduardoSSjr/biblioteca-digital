@@ -1,16 +1,18 @@
-Claro. O seu `README.md` estava com problemas de formatação porque o Markdown para tabelas, listas, blocos de código e a árvore de diretórios não estava sendo aplicado, e havia alguns artefatos de "Copiar código" misturados.
+Com certeza. Você está certo, o `README.md` original [file: `eduardossjr/biblioteca-digital/biblioteca-digital-main/readme.md`] está desatualizado.
 
-Aqui está o conteúdo 100% idêntico, mas com a formatação Markdown correta para que ele renderize perfeitamente.
+Nós adicionamos o cadastro e listagem de usuários e, o mais importante, refatoramos o projeto para implementar os padrões de projeto clássicos (Singleton, Factory, Observer, Strategy) exigidos pelo PDF da atividade [file: `Projeto de Padrões de Projeto em Java.pdf`].
+
+Aqui está o `README.md` 100% atualizado para refletir o estado atual do seu projeto. Basta copiar e colar:
 
 -----
 
-# 📚 Biblioteca Digital – Sistema de Gerenciamento
+# 📚 Biblioteca Digital – Sistema de Gerenciamento (com Padrões GoF)
 
 ## 🚀 Visão Geral
 
-Este projeto tem como objetivo **implementar um sistema de gerenciamento de uma biblioteca digital em Java**, aplicando **padrões de projeto de software (GoF)** para resolver problemas recorrentes de design e promover um código mais modular, extensível e manutenível.
+Este projeto implementa um sistema de gerenciamento de uma biblioteca digital em Java, com foco principal na aplicação de **padrões de projeto de software (GoF)** clássicos para resolver problemas recorrentes de design, conforme especificado em uma atividade acadêmica.
 
-A aplicação permite **cadastrar, listar e gerenciar empréstimos de livros**, com uma interface simples desenvolvida com **Thymeleaf** e **Spring Boot**.
+A aplicação permite **cadastrar livros e usuários (Alunos/Professores), listar ambos e gerenciar empréstimos**, com uma interface web simples desenvolvida com **Spring Boot** e **Thymeleaf**.
 
 -----
 
@@ -21,62 +23,66 @@ A aplicação permite **cadastrar, listar e gerenciar empréstimos de livros**, 
   * **Java 17+**
   * **Spring Boot 3**
       * Spring Web (MVC)
-      * Spring Data JPA
       * Spring Boot DevTools
   * **Thymeleaf** – Template Engine para renderização de páginas HTML dinâmicas.
-  * **H2 Database** – Banco de dados em memória, ideal para testes e desenvolvimento.
+  * **Banco de Dados em Memória** (via Singleton) – Simula o armazenamento para focar nos padrões.
 
 ### 🎨 Frontend
 
   * **HTML5**
-  * **CSS3**
-  * **Thymeleaf fragments/layouts** (para componentes reutilizáveis de layout)
+  * **CSS3** (com Bootstrap 5)
 
-### ⚙️ Padrões de Projeto (GoF)
+-----
 
-O projeto adota os seguintes padrões de design:
+## ⚙️ Padrões de Projeto (GoF) Aplicados
+
+O projeto foi refatorado para adotar os seguintes padrões de design, conforme os requisitos da atividade:
 
 | Padrão | Descrição | Onde é aplicado |
-|---|---|---|
-| **DAO (Data Access Object)** | Isola a lógica de acesso a dados da lógica de negócio. | Repositórios JPA (`LivroRepository`) |
-| **MVC (Model-View-Controller)** | Separa responsabilidades entre modelo, visualização e controle. | Estrutura de Controllers, Models e Views |
-| **Singleton** | Garante uma única instância da configuração principal. | Configurações Spring Boot e BeanContext |
-| **Factory Method (conceitual)** | Facilita a criação de objetos sem expor a lógica de instanciação. | Pode ser estendido em serviços de criação de entidades futuras |
+| --- | --- | --- |
+| **Singleton** | [cite\_start]Garante que a classe `Biblioteca` tenha uma única instância global para gerenciar o estado (livros, usuários). [cite: 14] | `com.biblioteca.biblioteca.Biblioteca.java` |
+| **Factory Method** | [cite\_start]Centraliza a criação de diferentes tipos de `Usuario` (Aluno, Professor), permitindo fácil expansão. [cite: 18] | `com.biblioteca.biblioteca.UsuarioFactory.java` |
+| **Observer** | [cite\_start]Permite que múltiplos "notificadores" (Email, SMS) "assistam" à biblioteca e reajam a eventos (ex: cadastro de novo livro). [cite: 22] | `com.biblioteca.notificacao.Observador.java` e suas implementações. |
+| **Strategy** | [cite\_start]Define uma família de algoritmos para o cálculo de multas, permitindo que cada tipo de usuário tenha sua própria regra. [cite: 27] | `com.biblioteca.emprestimo.MultaStrategy.java` e suas implementações. |
+| **MVC** | Padrão arquitetural do Spring Boot, separando `Controllers` (rotas), `Models` (dados) e `Views` (Thymeleaf). | Estrutura geral da aplicação. |
 
 -----
 
 ## 🗂️ Estrutura de Pastas
+
+[cite\_start]A estrutura de pacotes foi organizada para refletir os padrões e funcionalidades [cite: 31-52]:
 
 ```text
 biblioteca-digital/
 │
 ├── src/
 │ ├── main/
-│ │ ├── java/com/exemplo/biblioteca/
-│ │ │ ├── controller/ → Controladores MVC (rotas da aplicação)
-│ │ │ ├── model/ → Entidades JPA (Livro, Empréstimo, etc.)
-│ │ │ ├── repository/ → Interfaces JPA (DAO)
-│ │ │ └── service/ → Lógica de negócio (opcional)
+│ │ ├── java/com/biblioteca/
+│ │ │ ├── biblioteca/    → Padrões Singleton e Factories
+│ │ │ │   ├── Biblioteca.java
+│ │ │ │   ├── UsuarioFactory.java
+│ │ │ │   └── LivroFactory.java
+│ │ │ ├── controller/    → Controladores MVC (rotas da aplicação)
+│ │ │ │   └── LivroController.java
+│ │ │ ├── emprestimo/    → Padrão Strategy
+│ │ │ │   ├── MultaStrategy.java
+│ │ │ │   ├── AlunoMulta.java
+│ │ │ │   └── Emprestimo.java
+│ │ │ ├── model/         → Entidades (Livro, Usuario, Aluno, etc.)
+│ │ │ ├── notificacao/   → Padrão Observer
+│ │ │ │   ├── Observador.java
+│ │ │ │   ├── NotificadorEmail.java
+│ │ │ │   └── NotificadorSMS.java
+│ │ │ ├── service/       → Lógica de negócio (orquestrador)
+│ │ │ │   └── BibliotecaService.java
+│ │ │ └── BibliotecaApplication.java
 │ │ └── resources/
-│ │ ├── templates/ → Páginas HTML (Thymeleaf)
-│ │ ├── static/ → Arquivos CSS/JS
+│ │ ├── templates/     → Páginas HTML (Thymeleaf)
 │ │ └── application.properties
-│ └── test/ → Testes unitários
 │
 ├── pom.xml → Gerenciador de dependências Maven
 └── README.md → Documentação do projeto
 ```
-
------
-
-## 🧰 Requisitos do Sistema
-
-| Requisito | Versão Recomendada |
-|---|---|
-| Java | 17 ou superior |
-| Maven | 3.9+ |
-| IDE | IntelliJ IDEA / Eclipse / VS Code com extensão Java |
-| Navegador | Qualquer um moderno (Chrome, Edge, Firefox) |
 
 -----
 
@@ -91,13 +97,13 @@ cd biblioteca-digital
 
 ### 2\. Compilar e Rodar o Projeto
 
-Se estiver usando Maven:
+Usando Maven (recomendado):
 
 ```bash
 mvn spring-boot:run
 ```
 
-Ou diretamente pela sua IDE (botão Run Application).
+Ou diretamente pela sua IDE (botão "Run" no `BibliotecaApplication.java` [file: `eduardossjr/biblioteca-digital/biblioteca-digital-main/src/main/java/com/biblioteca/BibliotecaApplication.java`]).
 
 ### 3\. Acessar no Navegador
 
@@ -109,8 +115,18 @@ http://localhost:8080
 
 ## 🧠 Funcionalidades Principais
 
-✅ Listar livros cadastrados
-✅ Cadastrar novos livros
-✅ Registrar empréstimos
-✅ Visualizar status dos livros (disponível ou emprestado)
-✅ Interface leve e responsiva com Thymeleaf
+✅ **Usuários:**
+
+  * Cadastrar novos usuários (Aluno ou Professor) - (Padrão **Factory Method**)
+  * Listar usuários cadastrados
+
+✅ **Livros:**
+
+  * Cadastrar novos livros - (Padrão **Observer** notifica no console)
+  * Listar livros cadastrados e seu status
+
+✅ **Empréstimos:**
+
+  * Registrar empréstimos (associando um usuário a um livro)
+  * Registrar devoluções (liberando o livro)
+  * (Pronto para) Cálculo de multas via Padrão **Strategy**
