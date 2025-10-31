@@ -1,9 +1,3 @@
-Com certeza. Você está certo, o `README.md` original [file: `eduardossjr/biblioteca-digital/biblioteca-digital-main/readme.md`] está desatualizado.
-
-Nós adicionamos o cadastro e listagem de usuários e, o mais importante, refatoramos o projeto para implementar os padrões de projeto clássicos (Singleton, Factory, Observer, Strategy) exigidos pelo PDF da atividade [file: `Projeto de Padrões de Projeto em Java.pdf`].
-
-Aqui está o `README.md` 100% atualizado para refletir o estado atual do seu projeto. Basta copiar e colar:
-
 -----
 
 # 📚 Biblioteca Digital – Sistema de Gerenciamento (com Padrões GoF)
