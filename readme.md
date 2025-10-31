@@ -1,3 +1,9 @@
+Claro. O seu `README.md` estava com problemas de formatação porque o Markdown para tabelas, listas, blocos de código e a árvore de diretórios não estava sendo aplicado, e havia alguns artefatos de "Copiar código" misturados.
+
+Aqui está o conteúdo 100% idêntico, mas com a formatação Markdown correta para que ele renderize perfeitamente.
+
+-----
+
 # 📚 Biblioteca Digital – Sistema de Gerenciamento
 
 ## 🚀 Visão Geral
@@ -6,38 +12,42 @@ Este projeto tem como objetivo **implementar um sistema de gerenciamento de uma 
 
 A aplicação permite **cadastrar, listar e gerenciar empréstimos de livros**, com uma interface simples desenvolvida com **Thymeleaf** e **Spring Boot**.
 
----
+-----
 
 ## 🧩 Tecnologias e Ferramentas Utilizadas
 
 ### 🖥️ Backend
-- **Java 17+**
-- **Spring Boot 3**
-  - Spring Web (MVC)
-  - Spring Data JPA
-  - Spring Boot DevTools
-- **Thymeleaf** – Template Engine para renderização de páginas HTML dinâmicas.
-- **H2 Database** – Banco de dados em memória, ideal para testes e desenvolvimento.
+
+  * **Java 17+**
+  * **Spring Boot 3**
+      * Spring Web (MVC)
+      * Spring Data JPA
+      * Spring Boot DevTools
+  * **Thymeleaf** – Template Engine para renderização de páginas HTML dinâmicas.
+  * **H2 Database** – Banco de dados em memória, ideal para testes e desenvolvimento.
 
 ### 🎨 Frontend
-- **HTML5**
-- **CSS3**
-- **Thymeleaf fragments/layouts** (para componentes reutilizáveis de layout)
+
+  * **HTML5**
+  * **CSS3**
+  * **Thymeleaf fragments/layouts** (para componentes reutilizáveis de layout)
 
 ### ⚙️ Padrões de Projeto (GoF)
+
 O projeto adota os seguintes padrões de design:
 
 | Padrão | Descrição | Onde é aplicado |
-|--------|------------|-----------------|
+|---|---|---|
 | **DAO (Data Access Object)** | Isola a lógica de acesso a dados da lógica de negócio. | Repositórios JPA (`LivroRepository`) |
 | **MVC (Model-View-Controller)** | Separa responsabilidades entre modelo, visualização e controle. | Estrutura de Controllers, Models e Views |
 | **Singleton** | Garante uma única instância da configuração principal. | Configurações Spring Boot e BeanContext |
 | **Factory Method (conceitual)** | Facilita a criação de objetos sem expor a lógica de instanciação. | Pode ser estendido em serviços de criação de entidades futuras |
 
----
+-----
 
 ## 🗂️ Estrutura de Pastas
 
+```text
 biblioteca-digital/
 │
 ├── src/
@@ -55,42 +65,50 @@ biblioteca-digital/
 │
 ├── pom.xml → Gerenciador de dependências Maven
 └── README.md → Documentação do projeto
+```
 
-yaml
-Copiar código
-
----
+-----
 
 ## 🧰 Requisitos do Sistema
 
 | Requisito | Versão Recomendada |
-|------------|--------------------|
+|---|---|
 | Java | 17 ou superior |
 | Maven | 3.9+ |
 | IDE | IntelliJ IDEA / Eclipse / VS Code com extensão Java |
 | Navegador | Qualquer um moderno (Chrome, Edge, Firefox) |
 
----
+-----
 
 ## ⚡ Como Executar o Projeto
 
-### 1. Clonar o Repositório
+### 1\. Clonar o Repositório
+
 ```bash
 git clone https://github.com/SEU_USUARIO/biblioteca-digital.git
 cd biblioteca-digital
-2. Compilar e Rodar o Projeto
+```
+
+### 2\. Compilar e Rodar o Projeto
+
 Se estiver usando Maven:
 
-bash
-Copiar código
+```bash
 mvn spring-boot:run
+```
+
 Ou diretamente pela sua IDE (botão Run Application).
 
-3. Acessar no Navegador
-bash
-Copiar código
+### 3\. Acessar no Navegador
+
+```bash
 http://localhost:8080
-🧠 Funcionalidades Principais
+```
+
+-----
+
+## 🧠 Funcionalidades Principais
+
 ✅ Listar livros cadastrados
 ✅ Cadastrar novos livros
 ✅ Registrar empréstimos
