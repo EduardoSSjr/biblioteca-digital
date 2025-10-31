@@ -1,0 +1,108 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    background-color: #f5f6fa;
+    color: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+/* Container principal */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #40739e;
+}
+
+/* Links de navegação */
+a {
+    text-decoration: none;
+    color: #40739e;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #dcdde1;
+}
+
+th {
+    background-color: #40739e;
+    color: #ffffff;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f2f6;
+}
+
+/* Status do livro */
+.status-disponivel {
+    color: green;
+    font-weight: bold;
+}
+
+.status-emprestado {
+    color: red;
+    font-weight: bold;
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+input[type="text"], select {
+    padding: 10px;
+    border: 1px solid #dcdde1;
+    border-radius: 6px;
+    width: 100%;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #40739e;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2f3640;
+}

@@ -1,0 +1,27 @@
+<!-- src/main/resources/templates/layout.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca Digital</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>📚 Biblioteca Digital</h1>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/livros}">Livros</a>
+        <a th:href="@{/cadastrar}">Cadastrar</a>
+        <a th:href="@{/emprestar}">Emprestar</a>
+    </nav>
+</header>
+
+<main th:replace="${content}"></main>
+
+<footer>
+    <p>© 2025 Biblioteca Digital</p>
+</footer>
+</body>
+</html>
